@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  anchoImagen = 10
   nombre = "Andres"
   edad = 25
   img = "https://source.unsplash.com/random"
@@ -24,7 +25,14 @@ export class AppComponent {
     pass: ""
   }
 
+  box = {
+    width : 100,
+    heigth : 100,
+    background : "red"
+  }
+
   Test = "Hello World"
+  Test2 = "Hello World2"
 
   toggleButton() {
     this.btnDisabled = !this.btnDisabled

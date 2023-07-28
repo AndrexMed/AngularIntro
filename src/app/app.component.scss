@@ -9,3 +9,26 @@
         background-color: red;
     }
 }
+.active{
+    color: red;
+}
+
+.estilos{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.linea-error{
+
+
+    &.valid{
+        border: 2px solid green;
+        height: 0px;
+    }
+       &.invalid{
+        border: 2px solid red;
+        height: 0;
+       }
+    }
+
+
