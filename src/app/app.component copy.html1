@@ -1,0 +1,97 @@
+<h1>String Interpolation</h1>
+<h2>Giovanni Alzate {{ "hello-".repeat(5) }}</h2>
+
+<img src="{{img}}" alt="" width="250" height="150">
+
+<hr>
+<h1>Propiedades</h1>
+
+<button [disabled]="btnDisabled">Boton</button>
+
+<progress max="100" [value]="Persona.age"></progress>
+
+<hr>
+
+<h1>Event binding</h1>
+<button (click)="toggleButton()">Activar/Desactivar</button>
+<p>{{ Persona.age }}</p>
+<button type="button" (click)="incrementarEdad()">Incrementar edad</button>
+
+<h2>Other Events</h2>
+<p>{{ Test }}</p>
+<input type="text" (keyup)="changeH2($event)">
+
+<hr>
+<h1>Data Binding</h1>
+<p>{{ nombre }}</p>
+<input type="text" [(ngModel)]="nombre" #nameInput="ngModel" required>
+<p> Valid : {{ nameInput.valid }} </p>
+
+<hr>
+<h1>[ngSwitch]</h1>
+<div [ngSwitch]="nombre">
+    <p *ngSwitchCase="'Andres'">True</p>
+    <p *ngSwitchCase="'Gio'">Correcto</p>
+</div>
+
+<hr>
+<h1>Formulario & class&Style</h1>
+<form action="" #formulario="ngForm" (ngSubmit)="registrar()">
+    <div class="input-group">
+        <label for="name">Nombre</label>
+        <input type="text" required #nameInput2="ngModel" [(ngModel)]="Register.name" name="name"/>
+        <p class="message-error" [class.invalid]="nameInput2.invalid">Mensaje error</p>
+    </div>
+    <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" [(ngModel)]="Register.email" id="email" required name="email" #name3="ngModel">
+        <p [style.color]="name3.invalid ? 'red' : 'blue'">Mensaje error</p>
+    </div>
+    <div class="input-group">
+        <label for="pass">Password</label>
+        <input type="password" [(ngModel)]="Register.pass" id="pass" required name="pass">
+        <p>Mensaje error</p>
+    </div>
+    <button type="submit" [disabled]="formulario.invalid">Registrar</button>
+    <button type="button">Accion</button>
+</form>
+
+<hr>
+
+<h1>Class and style</h1>
+<div class="estilos">
+    <div>
+        <input type="text" [(ngModel)]="anchoImagen">
+    </div>
+    <div>
+        <img [src]="img" alt="" [style.width.%]="anchoImagen">
+    </div>
+</div>
+
+<hr>
+
+<h1>ngClass &  ngStyle</h1>
+<div>
+    <input type="text" required #name4="ngModel" [(ngModel)]="Test2"/>
+    <hr class="linea-error" [ngClass]="{
+        'valid' : name4.valid,
+        'invalid' : name4.invalid
+    }"
+    />
+</div>
+
+<hr>
+
+<div>
+    <input type="text" [(ngModel)]="box.width">
+    <input type="text" [(ngModel)]="box.heigth">
+    <input type="color" [(ngModel)]="box.background">
+</div>
+<div>
+    <div [ngStyle]="{
+        'width.px' : box.width,
+        'height.px' : box.heigth,
+        'background' : box.background,
+        'display' : 'block'
+    }"></div>
+</div>

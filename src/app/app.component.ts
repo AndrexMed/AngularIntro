@@ -1,57 +1,44 @@
 import { Component } from '@angular/core';
 
+import { Product } from './models/product.model';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  anchoImagen = 10
-  nombre = "Andres"
-  edad = 25
-  img = "https://source.unsplash.com/random"
+  //https://source.unsplash.com/random
+  imgParent = '';
+  showImg = true
 
-  btnDisabled = true
+  products: Product[] = [
+    {
+    id: "1",
+    name: "Product 1",
+    price: 500,
+    img: "https://source.unsplash.com/random"
+  },
+  {
+    id: "2",
+    name: "Product 2",
+    price: 600,
+    img: "https://source.unsplash.com/random"
+  },
+  {
+    id: "3",
+    name: "Product 3",
+    price: 700,
+    img: "https://source.unsplash.com/random"
+  }
+]
 
-  Persona = {
-    name: "El Gio",
-    age: 25,
-    avatar: "https://source.unsplash.com/random"
+  onLoaded(img: string) {
+    console.log("Log padre: " + img)
   }
 
-  Register = {
-    name: "xxx",
-    email: "",
-    pass: ""
-  }
-
-  box = {
-    width : 100,
-    heigth : 100,
-    background : "red"
-  }
-
-  Test = "Hello World"
-  Test2 = "Hello World2"
-
-  toggleButton() {
-    this.btnDisabled = !this.btnDisabled
-  }
-  incrementarEdad() {
-    this.Persona.age += 1
-  }
-
-  onScroll(event: Event) {
-    const element = event.target as HTMLElement
-  }
-
-  changeH2(event: Event) {
-    const element = event.target as HTMLInputElement
-    this.Test = element.value
-  }
-
-  registrar() {
-    console.log(this.Register)
+  toggleImg(){
+    this.showImg = !this.showImg
   }
 
 }
