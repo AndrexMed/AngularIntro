@@ -1,34 +1,11 @@
 
-.message-error{
-    background-color: red;
-    color: white;
-    opacity: 0;
-    transition: all linear .5s;
-    &.invalid{
-        opacity: 1;
-        background-color: red;
-    }
-}
-.active{
-    color: red;
+.container-products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-.estilos{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.container-products > img{
+    width: 100px;
 }
-
-.linea-error{
-
-
-    &.valid{
-        border: 2px solid green;
-        height: 0px;
-    }
-       &.invalid{
-        border: 2px solid red;
-        height: 0;
-       }
-    }
-
 
