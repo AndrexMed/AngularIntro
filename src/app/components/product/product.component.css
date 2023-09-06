@@ -1,4 +1,6 @@
-.box1{
+p,h2{
+    margin: 0;
+}
+.container-products{
     width: 250px;
-    height: 20rem;
 }

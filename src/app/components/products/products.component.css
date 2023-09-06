@@ -1,6 +1,10 @@
 .products--grid {
   display: flex;
   flex-direction: column;
+  border: 1px solid black;
+  margin-top: 2%;
+  padding: 2%;
+
 }
 
 @media screen and (min-width: 40em) and (max-width: 63.9em){
