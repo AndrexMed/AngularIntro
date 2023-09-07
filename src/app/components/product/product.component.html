@@ -1,8 +1,10 @@
 <div class="container-products">
     <div style="border: 1px solid black;" class="box1">
         <p>{{ product.id }}</p>
-        <p>{{ product.name }}</p>
-        <p>{{ product.price }}</p>
-        <app-img [img]="product.img"></app-img>
+        <p>{{ product.title | reverse }}</p>
+        <p appHighlight>{{ product.description }}</p>
+        <p>{{ product.price | currency: "COP"}}</p>
+        <app-img [img]="product.image"></app-img>
     </div>
+    <button (click)="onAddToCart()">add to cart</button>
 </div>
