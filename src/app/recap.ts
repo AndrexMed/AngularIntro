@@ -1,4 +1,5 @@
 const username: string | number = "Giovanni"
+console.log(username)
 
 const suma = (a: number, b: number) => a + b
 
@@ -11,3 +12,4 @@ class Persona{
 }
 
 const Andres = new Persona("ElGio", 25)
+console.log(Andres)

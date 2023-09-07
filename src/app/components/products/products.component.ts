@@ -11,7 +11,7 @@ import { StoreService } from 'src/app/services/store.service';
 export class ProductsComponent {
 
   myShoppingCartProducts: Product[] = []
-  total: number = 0
+  total = 0
 
   products: Product[] = [];
 

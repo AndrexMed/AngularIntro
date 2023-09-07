@@ -6,8 +6,10 @@ import { Component, Input, Output, EventEmitter, OnInit, OnChanges, AfterViewIni
   styleUrls: ['./img.component.css']
 })
 export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   img: string = ""
   
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   @Input("img")
   set changeImg(newImg: string){
     this.img = newImg
