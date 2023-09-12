@@ -1,11 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("app/components/styles/reset.scss");
-@import url("https://fonts.googleapis.com/css2?family=Quicksand&amp;display=swap");
 
-*{
-    font-family: "Quicksand", sans-serif;
-    
-}
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
 
 .products--grid {
     app-img {

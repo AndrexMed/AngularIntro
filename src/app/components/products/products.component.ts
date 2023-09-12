@@ -29,7 +29,7 @@ export class ProductsComponent {
         this.products = response
       },
       error => {
-
+        console.log(error)
       }
     )
   }

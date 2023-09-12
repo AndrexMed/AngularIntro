@@ -4,7 +4,7 @@
         <p>{{ product.title | reverse }}</p>
         <p appHighlight>{{ product.description }}</p>
         <p>{{ product.price | currency: "COP"}}</p>
-        <app-img [img]="product.image"></app-img>
+        <app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
     </div>
     <button (click)="onAddToCart()">add to cart</button>
 </div>
