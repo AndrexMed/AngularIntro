@@ -6,5 +6,8 @@
         <p>{{ product.price | currency: "COP"}}</p>
         <app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
     </div>
+
+    <button (click)="onShowDetail()">show detail</button>
+
     <button (click)="onAddToCart()">add to cart</button>
 </div>

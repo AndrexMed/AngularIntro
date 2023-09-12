@@ -6,7 +6,7 @@ import { StoreService } from 'src/app/services/store.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
 
@@ -16,6 +16,8 @@ export class ProductsComponent {
   products: Product[] = [];
 
   fechaHoy = new Date()
+
+  showProductDetail = false
 
   constructor(private storeService: StoreService,
               private productService: ProductService) {
@@ -39,4 +41,16 @@ export class ProductsComponent {
     this.total = this.storeService.GetTotal()
   }
 
+  toggleProductDetail(){
+    this.showProductDetail = !this.showProductDetail
+  }
+
+  onShowDetail(id: string){
+    console.log(id)
+    this.productService.GetProduct(id).subscribe(
+      data => {
+        console.log(data)
+      }
+    )
+  }
 }

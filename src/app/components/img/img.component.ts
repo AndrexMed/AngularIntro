@@ -13,7 +13,7 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   @Input("img")
   set changeImg(newImg: string){
     this.img = newImg
-    console.log("change just img => ", this.img)
+    //console.log("change just img => ", this.img)
   }
   @Output() loaded = new EventEmitter<string>()
 
@@ -23,19 +23,19 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   /*Ciclos de vida de componentes*/
   constructor() {
     //Corre antes del render - NO correr peticiones async - corre una sola vez
-    console.log('Constructor', 'ImgValue =>', this.img);
+    //console.log('Constructor', 'ImgValue =>', this.img);
   }
 
 
   ngOnChanges(changes: SimpleChanges): void {
     //Corre antes del render - evalua cambios - corre muchas veces
-    console.log('OnChanges', 'ImgValue =>', this.img);
-    console.log("changes: ", changes)
+    //console.log('OnChanges', 'ImgValue =>', this.img);
+    //console.log("changes: ", changes)
   }
 
   ngOnInit(): void {
     //Corre antes del render - SI podemos correr peticiones async - fetch - corre una sola vez
-    console.log('ngOnInit', 'ImgValue =>', this.img);
+    //console.log('ngOnInit', 'ImgValue =>', this.img);
 
     // this.counterFn = window.setInterval(() => {
     //   this.counter += 1
@@ -45,12 +45,12 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
 
   ngAfterViewInit(): void {
     //Corre despues del render - aca se manipulan los componentes hijos - relacionado con directivas
-    console.log('ngAfterViewInit');
+    //console.log('ngAfterViewInit');
   }
 
   ngOnDestroy(): void {
     //Corre solo cuando se elimina un componente
-    console.log('Se destruyo el componente img ngOnDestroy');
+    //console.log('Se destruyo el componente img ngOnDestroy');
     // window.clearInterval(this.counterFn)
   }
 
@@ -61,7 +61,7 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   }
 
   imgLoaded() {
-    console.log("Log Hijo")
+    //console.log("Log Hijo")
     this.loaded.emit(this.img)
   }
 }

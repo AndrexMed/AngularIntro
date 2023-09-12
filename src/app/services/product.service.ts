@@ -7,12 +7,16 @@ import { Product } from '../models/product.model';
 })
 export class ProductService {
 
-  apiUrl = "https://fakestoreapi.com/products"
-  apiUrl2 = "https://api.escuelajs.co/api/v1/products/"
+  private apiUrl = "https://fakestoreapi.com/products"
+  private apiUrl2 = "https://api.escuelajs.co/api/v1/products"
 
   constructor(private http: HttpClient) { }
 
   GetAllProducts(){
     return this.http.get<Product[]>(this.apiUrl2)
+  }
+
+  GetProduct(id: string){
+    return this.http.get<Product>(`${this.apiUrl2}/${id}`)
   }
 }

@@ -13,7 +13,7 @@ export class NavComponent implements OnInit{
   counter = 0
 
   constructor(private storeSvc: StoreService){
-
+    console.log("***** Constructor Nav *****")
   }
 
   ngOnInit(): void {
