@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Product } from 'src/app/models/product.model';
+import { Product, CreateProductDTO } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { StoreService } from 'src/app/services/store.service';
 
@@ -20,9 +20,9 @@ export class ProductsComponent {
   showProductDetail = false
 
   constructor(private storeService: StoreService,
-              private productService: ProductService) {
+    private productService: ProductService) {
     this.myShoppingCartProducts = this.storeService.GetMyShoppingCartProducts()
-   }
+  }
 
   ngOnInit(): void {
     this.productService.GetAllProducts().subscribe(
@@ -41,11 +41,11 @@ export class ProductsComponent {
     this.total = this.storeService.GetTotal()
   }
 
-  toggleProductDetail(){
+  toggleProductDetail() {
     this.showProductDetail = !this.showProductDetail
   }
 
-  onShowDetail(id: string){
+  onShowDetail(id: string) {
     console.log(id)
     this.productService.GetProduct(id).subscribe(
       data => {
@@ -53,4 +53,18 @@ export class ProductsComponent {
       }
     )
   }
+
+  createNewProduct() {
+    const product: CreateProductDTO = {
+      title: "New Product",
+      price: 12345,
+      images: ["adfdsfs"],
+      description: "Description newProduct",
+      categoryId: 2
+    }
+    this.productService.create(product).subscribe(data => {
+      console.log("Create data: ", data)
+    })
+  }
+
 }
