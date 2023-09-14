@@ -5,6 +5,7 @@
 <p>{{ "PrObAnDo LoS pIpEs AnGuLaR" | uppercase}}</p>
 
 <button (click)="toggleProductDetail()">Open</button>
+<button (click)="createNewProduct()">Create new product</button>
 <div class="products--grid">
     <app-product
       [product]="product"
@@ -16,8 +17,11 @@
 
   
 <div class="product-detail" [class.active]="showProductDetail">
-  <div>
+  <div *ngIf="productChosen">
       <button (click)="toggleProductDetail()">Close</button>
-      Contenido
+      <h1>{{ productChosen.title }}</h1>
+        <img [src]="productChosen.images[0]" alt="" id="imgSlide">
+      <p>{{ productChosen.description }}</p>
+      <button (click)="updateProduct()">Editar</button>
   </div>
 </div>
