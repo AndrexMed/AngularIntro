@@ -6,6 +6,7 @@
 
 <button (click)="toggleProductDetail()">Open</button>
 <button (click)="createNewProduct()">Create new product</button>
+
 <div class="products--grid">
     <app-product
       [product]="product"
@@ -14,7 +15,7 @@
       (showDetailProduct)="onShowDetail($event)"
     ></app-product>
   </div>
-
+  <button (click)="loadMore()">Load More</button>
   
 <div class="product-detail" [class.active]="showProductDetail">
   <div *ngIf="productChosen">
@@ -23,5 +24,6 @@
         <img [src]="productChosen.images[0]" alt="" id="imgSlide">
       <p>{{ productChosen.description }}</p>
       <button (click)="updateProduct()">Editar</button>
+      <button (click)="deleteProduct()" >Delete this product</button>
   </div>
 </div>
