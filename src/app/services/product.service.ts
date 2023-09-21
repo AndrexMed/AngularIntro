@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpParams, HttpStatusCode } from '@angu
 import { Injectable } from '@angular/core';
 import { CreateProductDTO, Product, UpdateProductDTO } from '../models/product.model';
 import { catchError, map, retry } from 'rxjs/operators';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { throwError, zip } from 'rxjs';
 
 @Injectable({
