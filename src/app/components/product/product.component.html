@@ -3,7 +3,8 @@
         <p>{{ product.id }}</p>
         <p>{{ product.title | reverse }}</p>
         <p appHighlight>{{ product.description }}</p>
-        <p>{{ product.price | currency: "COP"}}</p>
+        <p>Precio: {{ product.price | currency: "COP"}}</p>
+        <p>Impuesto: {{ product.taxes | currency: "COP"}}</p>
         <app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
     </div>
 

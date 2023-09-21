@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpParams, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CreateProductDTO, Product, UpdateProductDTO } from '../models/product.model';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, map, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
 import { throwError } from 'rxjs';
 
@@ -62,6 +62,14 @@ export class ProductService {
 
   getsProductsByPage(limit: number, offset: number) {
     return this.http.get<Product[]>(this.APIURL, { params: { limit, offset } })
+    .pipe(
+      map(products => products.map(item => {
+        return {
+          ...item,
+          taxes: .19 * item.price
+        }
+      }))
+    )
   }
 
 }
