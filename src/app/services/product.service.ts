@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { CreateProductDTO, Product, UpdateProductDTO } from '../models/product.model';
 import { catchError, map, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
-import { throwError } from 'rxjs';
+import { throwError, zip } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +70,13 @@ export class ProductService {
         }
       }))
     )
+  }
+
+  fetchReadAndUpdate(id: string, dto: UpdateProductDTO) {
+    return zip(
+      this.GetProduct(id),
+      this.update(id, dto)
+    );
   }
 
 }

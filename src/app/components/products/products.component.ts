@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { retry } from 'rxjs';
+import { retry, switchMap, zip } from 'rxjs';
 import { Product, CreateProductDTO, UpdateProductDTO } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { StoreService } from 'src/app/services/store.service';
@@ -135,6 +135,59 @@ export class ProductsComponent {
           console.log(error)
         }
       )
+  }
+
+  //Esto hay que evitarlo ya que podriamos caer en el callback hell
+  readAndUpdate(id: string) {
+    this.productService.GetProduct(id).subscribe(
+      response => {
+        const product = response
+        this.productService.update(product.id, { title: "Change" })
+          .subscribe(
+            respuestaUpdate => {
+              console.log(respuestaUpdate)
+            }
+          )
+      }
+    )
+  }
+
+  //switchMap se utiliza cuandp hay dependencias, es decir, cuando una consula depende de otra
+  readAndUpdate2(id: string) {
+    this.productService.GetProduct(id)
+      .pipe(
+        switchMap((product) => this.productService.update(product.id, { title: "Change" })),
+        switchMap((product) => this.productService.update(product.id, { title: "Change" }))
+      )
+      .subscribe(response => {
+        console.log(response)
+      },
+        error => {
+          console.log(error)
+        })
+  }
+
+  readAndUpdate3(id: string) {
+    // Crea observables para las operaciones
+    const getProductObservable = this.productService.GetProduct(id);
+    const updateObservable = this.productService.update(id, { title: "Nuevo titulo" });
+
+    // Combina los observables usando zip
+    zip(getProductObservable, updateObservable).subscribe(([getProductResponse, updateResponse]) => {
+      // Maneja las respuestas aquí
+      // getProductResponse es la respuesta de GetProduct
+      // updateResponse es la respuesta de la operación de actualización
+      console.log(getProductResponse);
+      console.log(updateResponse);
+    });
+  }
+
+  readAndUpdate4(id: string) {
+    this.productService.fetchReadAndUpdate(id, { title: 'change' })
+      .subscribe(response => {
+        const read = response[0];
+        const update = response[1];
+      })
   }
 
 }
