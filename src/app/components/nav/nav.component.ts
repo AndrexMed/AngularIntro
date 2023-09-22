@@ -8,6 +8,8 @@ import { StoreService } from 'src/app/services/store.service';
 })
 export class NavComponent implements OnInit{
 
+  profile: any
+
   activeMenu = false
 
   counter = 0
@@ -19,6 +21,11 @@ export class NavComponent implements OnInit{
   ngOnInit(): void {
     this.storeSvc.myCart$.subscribe(products => {
       this.counter = products.length
+    })
+
+    this.storeSvc.profile$.subscribe(profile => {
+      this.profile = profile
+      console.log("Profile desde Nav: ", profile)
     })
   }
 

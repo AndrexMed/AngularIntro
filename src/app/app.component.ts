@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { UsersService } from './services/users.service';
 import { AuthService } from './services/auth.service';
+import { StoreService } from './services/store.service';
 
 
 @Component({
@@ -11,8 +12,11 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
 
+  token = ""
+
   constructor(private usersSvc: UsersService,
-              private authSvc: AuthService) {
+              private authSvc: AuthService,
+              private storeSvc: StoreService) {
 
   }
 
@@ -37,6 +41,26 @@ export class AppComponent {
     .subscribe(
       rta => {
         console.log(rta)
+      }
+    )
+  }
+
+  login(){
+    this.authSvc.login("prueba@mail.com", "12345")
+    .subscribe(
+      rta => {
+        this.token = rta.access_token
+        console.log(rta.access_token)
+      }
+    )
+  }
+
+  getProfile(){
+    this.authSvc.profile(this.token)
+    .subscribe(
+      profile => {
+        console.log(profile)
+        this.storeSvc.sharedProfile(profile)
       }
     )
   }
