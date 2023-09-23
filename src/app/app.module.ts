@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from "@angular/common/http"
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http"
 
 import { AppComponent } from './app.component';
 import { ImgComponent } from './components/img/img.component';
@@ -11,6 +11,10 @@ import { NavComponent } from './components/nav/nav.component';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { TimesAgoPipe } from './pipes/times-ago.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
+import { TimeInterceptor } from './interceptors/time.interceptor';
+
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -27,9 +31,13 @@ import { HighlightDirective } from './directives/highlight.directive';
     BrowserModule,
     FormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CardModule,
+    ButtonModule
   ],
-  providers: [],
+  providers: [
+    {provide : HTTP_INTERCEPTORS, useClass: TimeInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,7 +6,7 @@ import { StoreService } from 'src/app/services/store.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent implements OnInit{
+export class NavComponent implements OnInit {
 
   profile: any
 
@@ -14,8 +14,7 @@ export class NavComponent implements OnInit{
 
   counter = 0
 
-  constructor(private storeSvc: StoreService){
-    console.log("***** Constructor Nav *****")
+  constructor(private storeSvc: StoreService) {
   }
 
   ngOnInit(): void {
@@ -25,11 +24,10 @@ export class NavComponent implements OnInit{
 
     this.storeSvc.profile$.subscribe(profile => {
       this.profile = profile
-      console.log("Profile desde Nav: ", profile)
     })
   }
 
-  toggleMenu(){
+  toggleMenu() {
     this.activeMenu = !this.activeMenu
   }
 }

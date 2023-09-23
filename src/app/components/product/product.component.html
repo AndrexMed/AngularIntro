@@ -1,4 +1,4 @@
-<div class="container-products">
+<!-- <div class="container-products">
     <div style="border: 1px solid black;" class="box1">
         <p>{{ product.id }}</p>
         <p>{{ product.title | reverse }}</p>
@@ -11,4 +11,25 @@
     <button (click)="onShowDetail()">show detail</button>
 
     <button (click)="onAddToCart()">add to cart</button>
+</div> -->
+
+<div class="card flex justify-content-center">
+    <p-card [header]="product.id +'. '+ product.title">
+        <app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
+        <p class="m-0">
+            {{ product.description }}
+        </p>
+        <br>
+        <p>
+            Price: {{ product.price | currency: "COP "}}$
+        </p>
+        <p>
+            Taxes: {{ product.taxes | currency: "COP"}}$
+        </p>
+        <br>
+        <div class="container-btns">
+            <p-button label="Show detail" styleClass="p-button-secondary p-button-text" (click)="onShowDetail()"></p-button>
+            <p-button label="Add to cart" styleClass="p-button-success p-button-text" (click)="onAddToCart()"></p-button>
+        </div>
+    </p-card>
 </div>

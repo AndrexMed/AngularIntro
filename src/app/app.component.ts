@@ -18,7 +18,6 @@ export class AppComponent {
   constructor(private usersSvc: UsersService,
     private authSvc: AuthService,
     private storeSvc: StoreService) {
-
   }
 
   //https://source.unsplash.com/random
