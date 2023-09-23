@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { UsersService } from './services/users.service';
 import { AuthService } from './services/auth.service';
 import { StoreService } from './services/store.service';
+import { switchMap } from 'rxjs';
 
 
 @Component({
@@ -15,8 +16,8 @@ export class AppComponent {
   token = ""
 
   constructor(private usersSvc: UsersService,
-              private authSvc: AuthService,
-              private storeSvc: StoreService) {
+    private authSvc: AuthService,
+    private storeSvc: StoreService) {
 
   }
 
@@ -32,37 +33,52 @@ export class AppComponent {
     this.showImg = !this.showImg
   }
 
-  createUser(){
+  createUser() {
     this.usersSvc.create({
       name: "Prueba1",
       email: "prueba@mail.com",
       password: "12345"
     })
-    .subscribe(
-      rta => {
-        console.log(rta)
-      }
-    )
+      .subscribe(
+        rta => {
+          console.log(rta)
+        }
+      )
   }
 
-  login(){
+  login() {
     this.authSvc.login("prueba@mail.com", "12345")
-    .subscribe(
-      rta => {
-        this.token = rta.access_token
-        console.log(rta.access_token)
-      }
-    )
+      .pipe(
+        switchMap(token => {
+          this.token = token.access_token
+          return this.authSvc.profile(token.access_token)
+        })
+      )
+      .subscribe(
+        response => {
+          console.log(response)
+          this.storeSvc.sharedProfile(response)
+        }
+      )
   }
+  // login() {
+  //   this.authSvc.login("prueba@mail.com", "12345")
+  //     .subscribe(
+  //       rta => {
+  //         this.token = rta.access_token
+  //         console.log(rta.access_token)
+  //       }
+  //     )
+  // }
 
-  getProfile(){
+  getProfile() {
     this.authSvc.profile(this.token)
-    .subscribe(
-      profile => {
-        console.log(profile)
-        this.storeSvc.sharedProfile(profile)
-      }
-    )
+      .subscribe(
+        profile => {
+          console.log(profile)
+          this.storeSvc.sharedProfile(profile)
+        }
+      )
   }
 
 }
