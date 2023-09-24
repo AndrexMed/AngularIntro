@@ -8,28 +8,29 @@ import { GetUserEmailDTO, User } from '../models/users.model';
 })
 export class StoreService {
 
-  private myShoppingCartProducts: Product[] = []
+  private myShoppingCart: Product[] = []
 
   private myCart = new BehaviorSubject<Product[]>([])
   myCart$ = this.myCart.asObservable()
 
-  private profile = new BehaviorSubject<GetUserEmailDTO[]>([])
-  profile$ = this.profile.asObservable()
+
 
   GetMyShoppingCartProducts() {
-    return this.myShoppingCartProducts
+    return this.myShoppingCart
   }
 
   AddProduct(product: Product) {
-    this.myShoppingCartProducts.push(product)
-    this.myCart.next(this.myShoppingCartProducts)
+    this.myShoppingCart.push(product)
+    this.myCart.next(this.myShoppingCart)
   }
 
   GetTotal() {
-    return this.myShoppingCartProducts.reduce((suma, item) => suma + item.price, 0)
+    return this.myShoppingCart.reduce((suma, item) => suma + item.price, 0)
   }
 
+  // private profile = new BehaviorSubject<GetUserEmailDTO[]>([])
+  // profile$ = this.profile.asObservable()
   sharedProfile(profile: any) {
-    this.profile.next(profile)
+    // this.profile.next(profile)
   }
 }

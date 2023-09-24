@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/users.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -8,13 +10,16 @@ import { StoreService } from 'src/app/services/store.service';
 })
 export class NavComponent implements OnInit {
 
-  profile: any
+  profile: User | null = null;
 
   activeMenu = false
 
   counter = 0
 
-  constructor(private storeSvc: StoreService) {
+  token = '';
+
+  constructor(private storeSvc: StoreService,
+    private authSvc: AuthService) {
   }
 
   ngOnInit(): void {
@@ -22,12 +27,33 @@ export class NavComponent implements OnInit {
       this.counter = products.length
     })
 
-    this.storeSvc.profile$.subscribe(profile => {
-      this.profile = profile
-    })
+    // this.storeSvc.profile$.subscribe(profile => {
+    //   this.profile = profile
+    // })
   }
 
   toggleMenu() {
     this.activeMenu = !this.activeMenu
+  }
+
+  login() {
+    //this.authService.login('sebas@mail.com', '1212')
+    //.subscribe(rta => {
+    //  this.token = rta.access_token;
+    //  console.log(this.token);
+    //  this.getProfile();
+    //});
+    this.authSvc.loginAndGet('prueba@mail.com', '12345')
+      .subscribe(user => {
+        this.profile = user;
+        this.token = '---';
+      });
+  }
+
+  getProfile() {
+    this.authSvc.profile()
+      .subscribe(user => {
+        this.profile = user;
+      });
   }
 }
