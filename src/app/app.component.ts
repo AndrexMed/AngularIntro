@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UsersService } from './services/users.service';
+import { FilesService } from './services/files.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,10 @@ import { UsersService } from './services/users.service';
 })
 export class AppComponent {
 
-  constructor(private usersSvc: UsersService) {
+  imgRta = ""
+
+  constructor(private usersSvc: UsersService,
+    private fileSvc: FilesService) {
   }
 
   //https://source.unsplash.com/random
@@ -34,6 +38,27 @@ export class AppComponent {
           console.log(rta)
         }
       )
+  }
+
+  downloadPdf() {
+    this.fileSvc.getFile("my_pdf", "https://young-sands-07814.herokuapp.com/api/files/dummy.pdf", "application/pdf")
+      .subscribe()
+  }
+
+  onUploadImg(event: Event) {
+    const element = event.target as HTMLInputElement
+
+    const file = element.files?.item(0) as Blob
+
+    if (file) {
+      this.fileSvc.uploadFile(file).subscribe(
+        response => {
+          console.log("upload", response)
+          this.imgRta = response.location
+        }
+      )
+    }
+
   }
 
 }
