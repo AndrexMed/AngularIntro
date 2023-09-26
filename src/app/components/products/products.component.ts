@@ -32,7 +32,7 @@ export class ProductsComponent {
     description: ''
   };
 
-  limit = 10
+  limit = 5
   offset = 0
 
   statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';

@@ -15,7 +15,7 @@ interface File{
 })
 export class FilesService {
 
-  private APIURL = `${environment.API_URL}/api/files`;
+  private APIURL = `${environment.API_URL3}/api/files`;
 
   //npm i file-saver
   //npm install @types/file-saver --save-dev TIPADO

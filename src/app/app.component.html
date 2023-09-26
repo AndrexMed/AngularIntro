@@ -7,13 +7,17 @@
 
 <!-- <button *ngIf="!profile" (click)="login()">Login</button> -->
 <!-- <button (click)="getProfile()">Get-Profile</button> -->
-<app-nav></app-nav>
 
 <button (click)="createUser()">Create-User</button>
-<a href="../assets/files/hello.txt">Download</a>
 <button (click)="downloadPdf()">Download PDF</button>
 
 <input type="file" (change)="onUploadImg($event)">
 <img [src]="imgRta" alt="" *ngIf="imgRta">
 <hr>
-<app-products></app-products>
+
+<app-nav></app-nav>
+
+<router-outlet></router-outlet>
+
+<!-- <app-products></app-products> -->
+

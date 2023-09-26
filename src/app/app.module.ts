@@ -17,6 +17,16 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { MycartComponent } from './pages/mycart/mycart.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { RecoveryComponent } from './pages/recovery/recovery.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -28,6 +38,14 @@ import { ButtonModule } from 'primeng/button';
     ReversePipe,
     TimesAgoPipe,
     HighlightDirective,
+    HomeComponent,
+    NotFoundComponent,
+    CategoryComponent,
+    MycartComponent,
+    LoginComponent,
+    RegisterComponent,
+    RecoveryComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +53,9 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     HttpClientModule,
     CardModule,
-    ButtonModule
+    ButtonModule,
+    RouterModule,
+    AppRoutingModule
   ],
   providers: [
     {provide : HTTP_INTERCEPTORS, useClass: TimeInterceptor, multi: true},
