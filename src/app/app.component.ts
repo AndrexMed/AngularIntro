@@ -48,7 +48,7 @@ export class AppComponent {
   onUploadImg(event: Event) {
     const element = event.target as HTMLInputElement
 
-    const file = element.files?.item(0) as Blob
+    const file = element.files?.item(0)
 
     if (file) {
       this.fileSvc.uploadFile(file).subscribe(
