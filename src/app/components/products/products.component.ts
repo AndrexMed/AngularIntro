@@ -77,6 +77,8 @@ export class ProductsComponent {
     if (this.productChosen) {
       const changes: UpdateProductDTO = {
         title: "Nuevo Titulo",
+        images: ["https://source.unsplash.com/random", "https://source.unsplash.com/random", "https://source.unsplash.com/random"],
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore consequuntur magnam dolorem earum nemo cupiditate a voluptates fugiat ipsa voluptatibus!" 
       }
       const id = this.productChosen?.id
       this.productService.update(id, changes)

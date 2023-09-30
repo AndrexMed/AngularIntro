@@ -23,15 +23,15 @@ export class ProductService {
       params = params.set("limit", limit)
       params = params.set("offset", offset)
     }
-    return this.http.get<Product[]>(`${this.APIURL2}/categories/${categoryId}/products`, { params })
-      .pipe(
-        map(products => {
-          for (let i = 0; i < products.length; i++) {
-            products[i].images = ["https://source.unsplash.com/random"];
-          }
-          return products;
-        })
-      )
+    return this.http.get<Product[]>(`${this.APIURL}/categories/${categoryId}/products`, { params })
+    // .pipe(
+    //   map(products => {
+    //     for (let i = 0; i < products.length; i++) {
+    //       products[i].images = ["https://source.unsplash.com/random"];
+    //     }
+    //     return products;
+    //   })
+    // )
   }
 
   GetAllProducts(limit?: number, offset?: number) {
@@ -42,7 +42,7 @@ export class ProductService {
       params = params.set("limit", limit)
       params = params.set("offset", offset)
     }
-    return this.http.get<Product[]>(this.APIURL, { params, context: checkTime() })
+    return this.http.get<Product[]>(`${this.APIURL}/products`, { params, context: checkTime() })
       .pipe(
         retry(3),
         map(products => products.map(item => {
@@ -55,7 +55,7 @@ export class ProductService {
   }
 
   GetProduct(id: string) {
-    return this.http.get<Product>(`${this.APIURL}/${id}`)
+    return this.http.get<Product>(`${this.APIURL}/products/${id}`)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status === HttpStatusCode.Conflict) {

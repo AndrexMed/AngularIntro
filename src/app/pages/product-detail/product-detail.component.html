@@ -1,0 +1,21 @@
+<div class="page-product">
+    <button (click)="goToBack()">Back</button>
+    <div class="detail" *ngIf="product">
+        <div class="gallery">
+            <div class="card md:flex md:justify-content-center">
+                <p-galleria [value]="product.images" [numVisible]="5" [circular]="true" [showItemNavigators]="true"
+                    [showThumbnails]="false" [responsiveOptions]="responsiveOptions"
+                    [containerStyle]="{ 'max-width': '640px' }">
+                    <ng-template pTemplate="item" let-item>
+                        <img [src]="item" style="width: 100%; display: block;" />
+                    </ng-template>
+                </p-galleria>
+            </div>
+        </div>
+        <div class="description-product">
+            <h2>{{ product.title }}</h2>
+            <h3>{{ product.price | currency }}</h3>
+            <p>{{ product.description }}</p>
+        </div>
+    </div>
+</div>

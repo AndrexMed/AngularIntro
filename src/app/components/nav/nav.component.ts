@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/app/models/product.model';
 import { User } from 'src/app/models/users.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { CategoriesService } from 'src/app/services/categories.service';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -9,6 +11,8 @@ import { StoreService } from 'src/app/services/store.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
+
+  categories : Category[] = []
 
   profile: User | null = null;
 
@@ -19,7 +23,8 @@ export class NavComponent implements OnInit {
   token = '';
 
   constructor(private storeSvc: StoreService,
-    private authSvc: AuthService) {
+    private authSvc: AuthService,
+    private categoriesSvc: CategoriesService) {
   }
 
   ngOnInit(): void {
@@ -30,6 +35,8 @@ export class NavComponent implements OnInit {
     // this.storeSvc.profile$.subscribe(profile => {
     //   this.profile = profile
     // })
+
+    this.getAllCategories()
   }
 
   toggleMenu() {
@@ -55,5 +62,14 @@ export class NavComponent implements OnInit {
       .subscribe(user => {
         this.profile = user;
       });
+  }
+
+  getAllCategories(){
+    this.categoriesSvc.getAll()
+    .subscribe(
+      data => {
+        this.categories = data
+      }
+    )
   }
 }

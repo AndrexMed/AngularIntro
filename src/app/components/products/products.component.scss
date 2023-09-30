@@ -44,3 +44,27 @@
   width: 100%;
   height: 250px;
 }
+
+.btnClose{
+  display: flex;
+  justify-content: end;
+  margin: 1%;
+}
+
+.imgDetail{
+  display: flex;
+  justify-content: center;
+  margin: 2%;
+}
+
+.imgDetail > img {
+  border-radius: 10px;
+  image-rendering: auto;
+}
+
+.container-btns{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2%;
+}

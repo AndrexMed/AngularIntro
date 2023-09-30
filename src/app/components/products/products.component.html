@@ -15,11 +15,20 @@
 
 <div class="product-detail" [class.active]="showProductDetail">
   <div *ngIf="productChosen">
-    <button (click)="toggleProductDetail()">Close</button>
+    <div class="btnClose">
+      <p-button icon="pi pi-times" styleClass="p-button-rounded p-button-danger p-button-outlined"
+        (click)="toggleProductDetail()"></p-button>
+    </div>
     <h1>{{ productChosen.title }}</h1>
-    <img [src]="productChosen.images[0]" alt="" id="imgSlide">
+    <div class="imgDetail">
+      <img [src]="productChosen.images[0]" alt="" id="imgSlide">
+    </div>
     <p>{{ productChosen.description }}</p>
-    <button (click)="updateProduct()">Editar</button>
-    <button (click)="deleteProduct()">Delete this product</button>
+    <div class="container-btns">
+      <p-button label="Update" styleClass="p-button-secondary p-button-text p-button-sm"
+        (click)="updateProduct()"></p-button>
+      <p-button label="Delete" styleClass="p-button-danger p-button-text p-button-sm"
+        (click)="deleteProduct()" icon="pi pi-trash"></p-button>
+    </div>
   </div>
 </div>

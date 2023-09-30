@@ -16,9 +16,12 @@
 <div class="sideMenu" (click)="toggleMenu()" [class.active]="activeMenu">
   <button>Close</button>
   <ul>
-    <li><a href="">All</a></li>
-    <li><a href="">Clothes</a></li>
-    <li><a href="">Electronics</a></li>
+    <li><a routerLink="home">All</a></li>
+    <li *ngFor="let item of categories">
+      <a [routerLink]="['/category', item.id]">
+        {{ item.name }}
+      </a>
+    </li>
   </ul>
 </div>
 
@@ -29,14 +32,18 @@
         <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
       </a>
       <ul>
-        <li><a href="">All</a></li>
-        <li><a href="">Clothes</a></li>
-        <li><a href="">Electronics</a></li>
+        <li><a routerLink="home" routerLinkActive="active">All</a></li>
+        <li *ngFor="let item of categories">
+          <a [routerLink]="['/category', item.id]" routerLinkActive="active">
+            {{ item.name }}
+          </a>
+        </li>
       </ul>
     </nav>
     <div class="info">
       <div class="account">
-        <p-button label="Login" styleClass="p-button-success p-button-text p-button-sm" *ngIf="!profile; else elseBlock" (click)="login()"></p-button>
+        <p-button label="Login" styleClass="p-button-success p-button-text p-button-sm" *ngIf="!profile; else elseBlock"
+          (click)="login()"></p-button>
         <!-- <button *ngIf="!profile; else elseBlock" (click)="login()">Login</button> -->
         <ng-template #elseBlock>{{ profile?.email }}</ng-template>
       </div>

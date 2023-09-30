@@ -18,10 +18,12 @@ export class HomeComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.productService.GetAllProducts(this.limit, this.offset).subscribe((data) => {
-      this.products = data;
-      this.offset += this.limit;
-    });
+    this.productService.GetAllProducts(this.limit, this.offset).subscribe(
+      (data) => {
+        console.log(data)
+        this.products = data;
+        this.offset += this.limit;
+      });
   }
 
   onLoadMore() {
