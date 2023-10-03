@@ -30,7 +30,8 @@
         </p>
         <br>
         <div class="container-btns">
-            <p-button label="Show detail" styleClass="p-button-secondary p-button-text p-button-sm" (click)="onShowDetail()"></p-button>
+            <!-- <p-button label="Show detail" styleClass="p-button-secondary p-button-text p-button-sm" (click)="onShowDetail()"></p-button> -->
+            <a routerLink="." [queryParams]="{product: product.id}">Show Detail</a>
             <p-button label="Add to cart" styleClass="p-button-success p-button-text p-button-sm"
                 (click)="onAddToCart()"></p-button>
         </div>

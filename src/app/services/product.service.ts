@@ -73,15 +73,15 @@ export class ProductService {
   }
 
   create(product: CreateProductDTO) {
-    return this.http.post<Product>(this.APIURL, product)
+    return this.http.post<Product>(`${this.APIURL}/products`, product)
   }
 
   update(id: string, dto: UpdateProductDTO) {
-    return this.http.put<Product>(`${this.APIURL}/${id}`, dto)
+    return this.http.put<Product>(`${this.APIURL}/products/${id}`, dto)
   }
 
   delete(id: string) {
-    return this.http.delete<boolean>(`${this.APIURL}/${id}`)
+    return this.http.delete<boolean>(`${this.APIURL}/products/${id}`)
   }
 
   getsProductsByPage(limit: number, offset: number) {

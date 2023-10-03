@@ -1,5 +1,7 @@
-<div class="page-product">
+<div class="btnBack">
     <button (click)="goToBack()">Back</button>
+</div>
+<div class="page-product">
     <div class="detail" *ngIf="product">
         <div class="gallery">
             <div class="card md:flex md:justify-content-center">
@@ -7,7 +9,7 @@
                     [showThumbnails]="false" [responsiveOptions]="responsiveOptions"
                     [containerStyle]="{ 'max-width': '640px' }">
                     <ng-template pTemplate="item" let-item>
-                        <img [src]="item" style="width: 100%; display: block;" />
+                        <img [src]="item" style="width: 100%; display: block; height: 300px; border-radius: 10px; margin: 1%;" />
                     </ng-template>
                 </p-galleria>
             </div>

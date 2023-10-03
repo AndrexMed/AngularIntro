@@ -13,7 +13,13 @@ export class ProductsComponent {
 
   @Input() products: Product[] = [];
   @Output() loadMore = new EventEmitter();
-
+  // @Input() productId: string | null = null
+  @Input()
+  set productId(id: string | null) {
+    if (id) {
+      this.onShowDetail(id)
+    }
+  }
   myShoppingCartProducts: Product[] = []
   total = 0
 
@@ -41,7 +47,10 @@ export class ProductsComponent {
 
   onShowDetail(id: string) {
     this.statusDetail = 'loading';
-    this.toggleProductDetail();
+    if(!this.showProductDetail){
+      this.showProductDetail = true
+    }
+    //this.toggleProductDetail();
     // console.log(id)
     this.productService.GetProduct(id)
       .subscribe(
@@ -63,9 +72,9 @@ export class ProductsComponent {
     const product: CreateProductDTO = {
       title: "New Product",
       price: 12345,
-      images: ["https://source.unsplash.com/random"],
+      images: ["https://source.unsplash.com/random", "https://picsum.photos/536/354", "https://randompicturegenerator.com/img/picture-generator/54e6d4414a5bb10ff3d8992cc12c30771037dbf85254794e722e7ed3974f_640.jpg"],
       description: "Description newProduct",
-      categoryId: 2
+      categoryId: 1
     }
     this.productService.create(product).subscribe(data => {
       console.log("Create data: ", data)
@@ -77,8 +86,8 @@ export class ProductsComponent {
     if (this.productChosen) {
       const changes: UpdateProductDTO = {
         title: "Nuevo Titulo",
-        images: ["https://source.unsplash.com/random", "https://source.unsplash.com/random", "https://source.unsplash.com/random"],
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore consequuntur magnam dolorem earum nemo cupiditate a voluptates fugiat ipsa voluptatibus!" 
+        images: ["https://source.unsplash.com/random", "https://picsum.photos/536/354", "https://randompicturegenerator.com/img/picture-generator/54e6d4414a5bb10ff3d8992cc12c30771037dbf85254794e722e7ed3974f_640.jpg"],
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore consequuntur magnam dolorem earum nemo cupiditate a voluptates fugiat ipsa voluptatibus!"
       }
       const id = this.productChosen?.id
       this.productService.update(id, changes)
