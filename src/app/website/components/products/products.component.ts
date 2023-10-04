@@ -101,9 +101,8 @@ export class ProductsComponent {
 
   deleteProduct() {
     if (this.productChosen) {
-      const id = this.productChosen.id
-      this.productService.delete(id).subscribe(
-        () => {
+      const id = this.productChosen?.id
+      this.productService.delete(id).subscribe(() => {
           const productIndex = this.products.findIndex(item => item.id === this.productChosen?.id)
           this.products.splice(productIndex, 1)
           this.showProductDetail = false

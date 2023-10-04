@@ -11,9 +11,11 @@
   <app-product [product]="product" *ngFor="let product of products" (addProduct)="onAddToShoppingCart($event)"
     (showDetailProduct)="onShowDetail($event)"></app-product>
 </div>
-<button (click)="onLoadMore()">Load More</button>
+
+<p-button label="" styleClass="p-button-rounded p-button-sm" (click)="onLoadMore()" class="btnLoadMore"><i class="pi pi-times"></i></p-button>
 
 <div class="product-detail" [class.active]="showProductDetail">
+  {{ statusDetail }}
   <div *ngIf="productChosen">
     <div class="btnClose">
       <p-button icon="pi pi-times" styleClass="p-button-rounded p-button-danger p-button-outlined"

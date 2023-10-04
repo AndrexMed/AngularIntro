@@ -68,3 +68,46 @@
   flex-wrap: wrap;
   margin-top: 2%;
 }
+
+// .btnLoadMore{
+//   position: fixed;
+// bottom: 1%;
+// left: 1%;
+// }
+
+.btnLoadMore {
+  background-color: #2196F3;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(33, 150, 243, 0.5);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  animation: giroBoton 2s infinite linear;
+}
+
+.btnLoadMore:hover {
+  background-color: #1565C0;
+  box-shadow: 0 4px 8px rgba(21, 101, 192, 0.5);
+}
+
+@keyframes giroBoton {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.btnLoadMore:focus {
+  outline: none;
+}
