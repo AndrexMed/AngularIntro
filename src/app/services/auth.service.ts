@@ -11,7 +11,7 @@ import { switchMap, tap } from 'rxjs';
 })
 export class AuthService {
 
-  private APIURL = `${environment.API_URL2}/api/auth`;
+  private APIURL = `${environment.API_URL3}/api/auth`;
 
   constructor(private htpp: HttpClient,
     private tokenSvc: TokenService) { }

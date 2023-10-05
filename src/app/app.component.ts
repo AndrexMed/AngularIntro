@@ -31,7 +31,8 @@ export class AppComponent {
     this.usersSvc.create({
       name: 'Giova',
       email: 'prueba@mail.com',
-      password: '12345'
+      password: '12345',
+      role: "customer"
     })
       .subscribe(
         rta => {

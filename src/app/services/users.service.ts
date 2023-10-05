@@ -8,7 +8,7 @@ import { CreateUserDTO, User } from '../models/users.model';
 })
 export class UsersService {
 
-  private APIURL = `${environment.API_URL2}/api/users`;
+  private APIURL = `${environment.API_URL3}/api/users`;
 
   constructor(private htpp: HttpClient) { }
 

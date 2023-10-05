@@ -10,6 +10,8 @@ import { MycartComponent } from './pages/mycart/mycart.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { LayaoutComponent } from './components/layout/layaout.component';
 
+import { authGuard } from '../guards/auth.guard';
+
 const routes: Routes = [
   {
     path: '',
@@ -53,7 +55,8 @@ const routes: Routes = [
       },
       {
         path: 'profile',
-        component: ProfileComponent,
+        canActivate: [ authGuard ],
+        component: ProfileComponent
       },
     ]
   },
