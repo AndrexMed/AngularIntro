@@ -12,8 +12,6 @@ export class StoreService {
   private myCart = new BehaviorSubject<Product[]>([])
   myCart$ = this.myCart.asObservable()
 
-
-
   GetMyShoppingCartProducts() {
     return this.myShoppingCart
   }

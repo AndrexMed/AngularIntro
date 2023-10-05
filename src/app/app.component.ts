@@ -1,18 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsersService } from './services/users.service';
 import { FilesService } from './services/files.service';
+import { AuthService } from './services/auth.service';
+import { TokenService } from './services/token.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   imgRta = ""
 
   constructor(private usersSvc: UsersService,
-    private fileSvc: FilesService) {
+    private fileSvc: FilesService,
+    private authSvc: AuthService,
+    private tokenSvc: TokenService) {
+  }
+
+  ngOnInit(): void {
+    const token = this.tokenSvc.getToken()
+    if (token) {
+      this.authSvc.profile().subscribe()
+    }
   }
 
   //https://source.unsplash.com/random

@@ -4,12 +4,16 @@ import { environment } from 'src/environments/environment';
 import { Auth } from '../models/auth.model';
 import { User } from '../models/users.model';
 import { TokenService } from './token.service';
-import { switchMap, tap } from 'rxjs';
+import { BehaviorSubject, switchMap, tap } from 'rxjs';
+import { Product } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  private user = new BehaviorSubject<User | null>(null)
+  user$ = this.user.asObservable()
 
   private APIURL = `${environment.API_URL3}/api/auth`;
 
@@ -36,6 +40,9 @@ export class AuthService {
       //"Content-type": "application/json"
       //  }
     })
+    .pipe(
+      tap(user => this.user.next(user))
+    )
   }
 
   loginAndGet(email: string, password: string) {
