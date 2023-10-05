@@ -22,7 +22,6 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    FormsModule,
     HttpClientModule,
     RouterModule,
     AppRoutingModule
