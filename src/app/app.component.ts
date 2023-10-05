@@ -41,9 +41,9 @@ export class AppComponent implements OnInit {
   createUser() {
     this.usersSvc.create({
       name: 'Giova',
-      email: 'prueba@mail.com',
+      email: 'prueba2@mail.com',
       password: '12345',
-      role: "customer"
+      role: "admin"
     })
       .subscribe(
         rta => {
