@@ -16,6 +16,8 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
 import { LayaoutComponent } from './components/layout/layaout.component';
 import { NavComponent } from './components/nav/nav.component';
 
+import { QuicklinkModule } from 'ngx-quicklink';
+
 @NgModule({
   declarations: [
     NavComponent,
@@ -31,7 +33,8 @@ import { NavComponent } from './components/nav/nav.component';
   imports: [
     CommonModule,
     WebsiteRoutingModule,
-    SharedModule
+    SharedModule,
+    QuicklinkModule
   ]
 })
 export class WebsiteModule { }
