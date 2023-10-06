@@ -1,0 +1,7 @@
+[build]
+  publish = "dist/angular-intro"
+  command = "npm run build"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
