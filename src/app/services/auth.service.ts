@@ -31,7 +31,8 @@ export class AuthService {
   profile() {
     return this.htpp.get<User>(`${this.APIURL}/profile`)
       .pipe(
-        tap(user => this.user.next(user))
+        tap(user => this.user.next(user)),
+        tap(user => console.log("user desde profile:", user)),
       )
   }
 

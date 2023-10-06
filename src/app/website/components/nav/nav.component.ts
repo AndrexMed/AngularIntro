@@ -57,7 +57,7 @@ export class NavComponent implements OnInit {
     //  console.log(this.token);
     //  this.getProfile();
     //});
-    this.authSvc.loginAndGet('john@mail.com', 'changeme')
+    this.authSvc.loginAndGet('admin@mail.com', 'admin123')
       .subscribe(() => {
         this.router.navigate(["/profile"])
         //this.profile = user;

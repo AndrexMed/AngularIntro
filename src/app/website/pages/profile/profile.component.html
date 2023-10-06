@@ -4,4 +4,5 @@
     <p>Email: {{ user.email }}</p>
     <p>Role: {{ user.role }}</p>
     <p>Pass: {{ user.password }}</p>
+    <a routerLink="/cms" *ngIf="user.role === 'admin'">Ir a cms</a>
 </div>
